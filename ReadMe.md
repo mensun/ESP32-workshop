@@ -1,6 +1,12 @@
 For Books
 https://github.com/WeitaoZhu/MicroPython
 
+For Simulator 
+https://wokwi.com/projects/new/micropython-esp32
+
+For Editor
+[thonny.org](https://thonny.org/)
+
 Quick Reference
 
 **machine module:**
