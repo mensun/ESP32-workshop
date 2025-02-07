@@ -7,16 +7,19 @@ https://wokwi.com/projects/new/micropython-esp32
 For Editor
 [thonny.org](https://thonny.org/)
 
+For Device Driver 
+https://www.silabs.com/documents/public/software/CP210x_Universal_Windows_Driver.zip
+
 Quick Reference
 
-**machine module:**
+# machine module:
 
 import machine
 machine.freq()          # get the current frequency of the CPU
 machine.freq(240000000) # set the CPU frequency to 240 MHz
 
 
-**esp module:**
+esp module:
 # low level methods to interact with flash storage
 esp.flash_size()
 esp.flash_user_start()
@@ -24,12 +27,12 @@ esp.flash_erase(sector_no)
 esp.flash_write(byte_offset, buffer)
 esp.flash_read(byte_offset, buffer)
 
-**esp32 module:**
+# esp32 module:
 import esp32
 esp32.raw_temperature() # read the internal temperature of the MCU, in Fahrenheit
 esp32.ULP()             # access to the Ultra-Low-Power Co-processor, not on ESP32C3/C6
 
-**WLAN**
+# WLAN
 import network
 wlan = network.WLAN(network.WLAN.IF_STA) # create station interface
 wlan.active(True)       # activate the interface
@@ -55,7 +58,7 @@ def do_connect():
             pass
     print('network config:', wlan.ipconfig('addr4'))
 
-**Delay Timing**
+# Delay Timing
 import time
 
 time.sleep(1)           # sleep for 1 second
@@ -64,7 +67,7 @@ time.sleep_us(10)       # sleep for 10 microseconds
 start = time.ticks_ms() # get millisecond counter
 delta = time.ticks_diff(time.ticks_ms(), start) # compute time difference
 
-**Timer**
+# Timer
 from machine import Timer
 
 tim0 = Timer(0)
@@ -89,14 +92,14 @@ p4 = Pin(4, Pin.IN, Pin.PULL_UP) # enable internal pull-up resistor
 p5 = Pin(5, Pin.OUT, value=1) # set pin high on creation
 p6 = Pin(6, Pin.OUT, drive=Pin.DRIVE_3) # set maximum drive strength
 
-**UART**
+# UART
 from machine import UART
 
 uart1 = UART(1, baudrate=9600, tx=33, rx=32)
 uart1.write('hello')  # write 5 bytes
 uart1.read(5)         # read up to 5 bytes
 
-**PWM**
+# PWM
 from machine import Pin, PWM
 
 pwm0 = PWM(Pin(0), freq=5000, duty_u16=32768) # create PWM object from a pin
@@ -117,7 +120,7 @@ pwm0.deinit()              # turn off PWM on the pin
 pwm2 = PWM(Pin(2), freq=20000, duty=512)  # create and configure in one go
 print(pwm2)                               # view PWM settings
 
-**ADC**
+# ADC
 from machine import ADC
 
 adc = ADC(pin)        # create an ADC object acting on a pin
